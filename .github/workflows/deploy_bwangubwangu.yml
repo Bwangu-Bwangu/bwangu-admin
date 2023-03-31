@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'BwanguBwangu'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E51EE40BF46945B1BEE5BF662EA65D6E }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D2819D3B9D7542E293148ADA1FCE1AB2 }}
           package: .
