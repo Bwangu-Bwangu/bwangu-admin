@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeAmountColumnType extends Migration
+class CreateModuleTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class ChangeAmountColumnType extends Migration
      */
     public function up()
     {
-        Schema::table('withdraw_requests', function (Blueprint $table) {
-            $table->decimal('amount',23,3)->default(0)->change();
+        Schema::create('module_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('type', 191)->nullable();
+            $table->text('description')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class ChangeAmountColumnType extends Migration
      */
     public function down()
     {
-        Schema::table('withdraw_requests', function (Blueprint $table) {
-            $table->decimal('amount')->default(0)->change();
-        });
+        Schema::dropIfExists('module_types');
     }
 }

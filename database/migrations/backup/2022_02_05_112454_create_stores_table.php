@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterTableOrderDetailsChangeVariation extends Migration
+class CreateStoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AlterTableOrderDetailsChangeVariation extends Migration
      */
     public function up()
     {
-        Schema::table('order_details', function (Blueprint $table) {
-            $table->text('variation')->change();
+        Schema::create('stores', function (Blueprint $table) {
+            $table->id();
+            $table->decimal('delivery_charge',24,3)->default(0);
+            $table->timestamps();
         });
     }
 
@@ -25,6 +27,6 @@ class AlterTableOrderDetailsChangeVariation extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('stores');
     }
 }

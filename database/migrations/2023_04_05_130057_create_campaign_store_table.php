@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeDataColumnToUserNotifiationsTable extends Migration
+class CreateCampaignStoreTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class ChangeDataColumnToUserNotifiationsTable extends Migration
      */
     public function up()
     {
-        Schema::table('user_notifications', function (Blueprint $table) {
-            $table->text('data')->change();
+        Schema::create('campaign_store', function (Blueprint $table) {
+            $table->unsignedBigInteger('campaign_id');
+            $table->unsignedBigInteger('store_id');
         });
     }
 
@@ -25,8 +26,6 @@ class ChangeDataColumnToUserNotifiationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('user_notifications', function (Blueprint $table) {
-            $table->string('data', 191)->change();
-        });
+        Schema::dropIfExists('campaign_store');
     }
 }
